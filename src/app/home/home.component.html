@@ -1,0 +1,30 @@
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Dashboard</span>
+    <span class="example-spacer"></span>
+    
+    <button mat-icon-button class="example-icon logout" aria-label="Example icon-button with logout icon" (click)="logout()">
+      <mat-icon class="logout">logout</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar> 
+<mat-card class="responsive-container">
+  <h2>User Details</h2>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Password</th>
+      <th>Status</th>
+    </tr>
+    <tr *ngFor="let user of users">
+      <td>{{user.name}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.phone}}</td>
+      <td>{{user.password}}</td>
+      <td>{{status}}</td>
+    </tr>
+  </table>
+</mat-card>

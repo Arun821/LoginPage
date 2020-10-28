@@ -1,0 +1,109 @@
+<div class="body">
+
+        <mat-card class="example-card">
+            <mat-card-content>
+                <mat-tab-group>
+                    <mat-tab  label="Login">
+                            <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && login()">
+                              <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Email</mat-label>
+                                <input matInput  id="useremail" [(ngModel)]="use.useremail" formControlName="useremail">
+                              </mat-form-field>
+                            
+                              <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Password</mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="use.userPass" formControlName="userPass" id="userPass">
+                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                              </mat-form-field>
+  
+                             <button class="login" type="submit" mat-raised-button [disabled]="!loginForm.valid">Login</button>
+                             <button class="forget" type="submit" mat-raised-button >Forget your password ?</button>
+                             <!-- <a href="" class="forget">Forget your password ?</a> -->
+                            </form>
+                    </mat-tab>
+                    <mat-tab label="Sign Up"> 
+                        <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register()" novalidate>
+                          <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Full Name</mat-label>
+                            <input matInput id="name" [(ngModel)]="user.name" formControlName="name">
+                          </mat-form-field>
+                          <div class="error" *ngIf="registerForm.get('name').touched && registerForm.get('name').invalid">
+                            <span *ngIf="registerForm.controls.name.errors.nameValidity; else elseBlock">
+                              *Invalid name
+                            </span>
+                            <ng-template #elseBlock>
+                              <span>*Name is required</span>
+                            </ng-template>
+                            
+                          </div>
+
+                          <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input matInput id="email" [(ngModel)]="user.email" formControlName="email">
+                          </mat-form-field>
+                          <div class="error" *ngIf="registerForm.get('email').touched && registerForm.get('email').invalid">
+                            <span>*Email is required</span>
+                          </div>
+
+                          <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Phone</mat-label>
+                            <input matInput id="phone" [(ngModel)]="user.phone" formControlName="phone">
+                          </mat-form-field>
+                          <div class="error" *ngIf="registerForm.get('phone').touched && registerForm.get('phone').invalid">
+                            <span *ngIf="registerForm.controls.phone.errors.pattern; else elseBlock">
+                              Invalid phone number
+                            </span>
+                            <ng-template #elseBlock>
+                             <span> *Phone number is required</span>
+                            </ng-template>
+                            
+                          </div>
+                          
+                        
+                          <mat-form-field appearance="fill" class="example-full-width">
+                            <mat-label>Enter your password</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" id="password" 
+                            [(ngModel)]="user.password" formControlName="password">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                          </mat-form-field>
+                          <div class="error" *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid">
+                            <span *ngIf="registerForm.controls.password.errors.passValidity; else elseBlock">
+                              Password contain minimum 6 characters one capital letter, one digit and a specil character
+                            </span>
+                            <ng-template #elseBlock>
+                             <span>*Password is required</span>
+                            </ng-template>
+                            
+                          </div>
+                          
+                          <mat-form-field appearance="fill" class="example-full-width">
+                            <mat-label>Enter your password</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" id="cpassword"
+                            [(ngModel)]="user.cPassword" formControlName="cpassword">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                          </mat-form-field>
+                          <div class="error" *ngIf="registerForm.get('cpassword').touched && registerForm.get('cpassword').invalid">
+                            <span *ngIf="registerForm.controls.cpassword.errors.passValidity; else elseBlock">
+                              Password dose not match
+                            </span>
+                            <ng-template #elseBlock>
+                              <span>*Confirm Password is required</span>
+                            </ng-template>
+                            
+                          </div>
+                          <button class="reset" mat-raised-button type="reset" >Clear</button>
+                          <button class="sign" mat-raised-button type="submit" [disabled]="!registerForm.valid">Sign Up</button>
+                          
+                        </form>
+                    </mat-tab>
+                  </mat-tab-group>
+            </mat-card-content>
+        </mat-card>
+    
+</div>

@@ -1,0 +1,67 @@
+.grid-container {
+  margin: 20px;
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+.logout{
+  outline-style: none;
+}
+.responsive-container{
+  width: 100%;
+  margin: 70px auto;
+  padding: 15px;
+  box-shadow: 0 0 6px #666;
+}
+
+.responsive-container h2{
+  text-align: center;
+  font-size: 40px;
+}
+.responsive-container table{
+  margin-top: 30px;
+  width: 100%;
+  
+}
+.responsive-container td{
+  border-color: solid 1px #cccc;
+}
+.responsive-container td:before{
+  display: none;
+}
+.responsive-container th, .responsive-container td{
+  display: table-cell;
+  padding: 10px;
+  text-align: left;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+@media (max-width: 767px){
+  .responsive-container{
+    width: 90%;
+  }
+  .responsive-container th{
+    display: none;
+  }
+  .responsive-container td{
+    display: block;
+  }
+  .responsive-container td:first-child{
+    padding-top: .5em
+  }
+  .responsive-container td:last-child{
+    padding-bottom: .5em;
+  }
+  .responsive-container td::before{
+    content: attr(data-th)":";
+    width: 6.5em;
+    display: inline-block;
+  }
+}
